@@ -1,0 +1,10 @@
+# Private product bindings — never publish
+LOCAL.md
+
+# Audit outputs — work product, may quote private paths/samples
+reviews/
+
+# Backups & scratch
+*.backup-*
+/tmp/
+.DS_Store

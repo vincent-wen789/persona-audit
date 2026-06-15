@@ -1,0 +1,32 @@
+# LOCAL — 你的 persona-audit 私有绑定(模板)
+
+> 复制成 `LOCAL.md` 再填(`LOCAL.md` 已 .gitignore,不进开源)。
+> 这是 SKILL.md「可插拔钩子」4 个点的填实处。不填也能跑——每个钩子都有缺省降级(见 SKILL.md 表)。
+
+## 钩子填实
+
+| 钩子 | 填你的值 | 不填时的降级 |
+|------|----------|--------------|
+| 设计宪法 | 例:`<repo>/docs/copy-constitution.md`(C 层判定依据的"已拍板"文档) | 缺 → A 层只修硬伤,愿望全进 B/C |
+| 存档位置 | 例:`<product-repo>/reviews/`,文件名 `<product>-persona-audit-<date>.md` | 缺 → 存产品 repo 根 |
+| 样本生成 | **把真实可跑命令写死在这**,别只写"见运行说明"。例:`cd <repo> && DEMO_MODE=1 python gen_report.py --branch all`;或"从生产 DB 导最近 8 封周报脱敏" | 见 SKILL.md 步骤 1 的 (a)/(b)/(c) 三档 |
+| 部署/同步 | 单端:`<test cmd>`;双端:改动端复制到另一端 `<pathA>` ↔ `<pathB>` | 单端直接跑测试即可 |
+
+## 画像取数规则(填你产品的真实值)
+
+- **画像① 镜像**:你产品的真实主用户是谁?身份/术语水平/使用场景/时段/设备——照实写一段,沿用最近一次存档审计的身份块。
+- **画像③ 资深**:你这域的 power user 是谁(无"从业者"概念的域 = 资深编辑 / 十年老用户 / 数据分析师……)。
+- **画像④ 目标用户**:看 SKILL.md 步骤 0 确认的"本次 ship 那层"是给谁做的。
+
+## 禁词 grep / 测试套件
+
+- 禁词 grep = 你的 ship-checklist 里的工程词清单(没有就跳过)。
+- 测试套件 = `<你的 test 命令>`。
+
+## B/C follow-up 去向
+
+例:GitHub issue / TODO 文件 / handoff。
+
+## 验证记录(可选,记你自己的战绩)
+
+- `<product> <date>`:N 条候选 → M 条采纳 → 路线图/修复。

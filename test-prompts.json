@@ -1,0 +1,5 @@
+[
+  {"id": 1, "prompt": "我的市场读数工具刚 ship 了 v0.8 新输出层，persona 审计一下", "expected": "happy path：完整走 5 步——生成 6-8 份覆盖全渲染路径的样本、4 画像并行冷读、共识矩阵、A/B/C/D 分层、存档 reviews/", "judge_b_score": 7},
+  {"id": 2, "prompt": "我那个记账 App 的周报推送文案上线了，画像审一下", "expected": "跨域适配：画像模板从行情域迁移到记账域，4 个探测机制（黑话/恐慌/口径/资产确认）保留，身份块换皮", "judge_b_score": 5},
+  {"id": 3, "prompt": "帮我审一下这个引擎的代码写得乱不乱", "expected": "不触发：代码 review 应路由到 code reviewer，本 skill 是输出冷读、不看代码", "judge_b_score": 9}
+]
