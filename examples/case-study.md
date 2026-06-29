@@ -1,33 +1,33 @@
-# Case Study — Persona Audit 实战(脱敏)
+# Case Study — Persona Audit in Practice (anonymized)
 
-> 两场真实审计的脱敏复盘,用来说明方法论怎么落地、产出长什么样。产品 = 面向散户的市场"读数"工具(确定性引擎,每天产出一条 user-facing 文本推送)。路径/产品代号已脱敏。
+> Anonymized post-mortems of two real audits, to show how the methodology lands in practice and what the output actually looks like. Product = a retail-facing market "readout" tool (a deterministic engine that ships one user-facing text push per day). Paths and product codenames have been anonymized.
 
-## 背景
+## Background
 
-产品每天给用户推一条"市场状态读数"。作者(也是主用户)太懂自己的逻辑,担心新用户读不懂、漏信息。在两次大版本 ship 后各跑一场 persona-audit。
+The product pushes users a daily "market-state readout." The author (also the primary user) knows their own logic too well, and worried new users wouldn't get it — would miss things or be confused. After each of two major version ships, they ran a persona-audit.
 
-## 第一场:股票读数工具,新输出层 ship 后
+## Round 1: stock readout tool, after shipping a new output layer
 
-- 样本:6-8 份,覆盖普通日 / 财报日 / 扫描对比表(三轴:渲染分支 × 边缘数据 × 触达面)
-- 4 画像并行冷读 → **5 条共识候选**
-- 产出:下两个版本的路线图
-- 主用户主观评价:"质量很高,很真实"(注:主用户=作者本人,这是单人自评,证据等级弱,仅作参考)
+- Sample: 6-8 pieces, covering ordinary days / earnings days / a scan comparison table (three axes: render branch × edge-case data × surface reach)
+- 4 personas cold-read in parallel → **5 consensus candidates**
+- Output: the roadmap for the next two versions
+- Primary user's subjective take: "high quality, very real" (note: the primary user = the author themselves; this is a single-person self-assessment, weak evidence grade, take with a grain of salt)
 
-## 第二场:加密读数工具
+## Round 2: crypto readout tool
 
-- 样本覆盖普通日 + 全亮演示模式 + 主力/边缘资产(含 meme 的 1000× 前缀代币)+ 扫描对比表 + 直达用户的推送面
-- **26 条共识矩阵(= 候选清单)**,其中两条关键:
-  - **1000× 价格错位**:边缘资产(1000 前缀 meme 币)价格显示差了 1000 倍——多个画像一眼撞出"这价格不对"(诚实说:这种数量级硬伤一个范围断言/人工扫一眼也能抓,不是非本方法不可)
-  - **多画像一致的语义错位**:某字段几个画像都误读成同一个错误意思。⚠️ caveat:画像共享同一底座模型,"一致误读"既可能是结构性硬伤、也可能只是"这个模型读这段就这么读"——当作高优**候选**核实,不当已证结论
-- 当日 **13 处修复 ship**(26 条候选 → 13 条被采纳,约一半;另一半是低票噪音或不值得改。**采纳率 ~50% 本身说明:矩阵是候选生成器,需人来筛,不是已验证缺陷清单**)
+- Sample covered ordinary days + full-glow demo mode + major/edge assets (including a meme token with a 1000× "1000" prefix) + a scan comparison table + the push surface that reaches users directly
+- **26-item consensus matrix (= candidate list)**, two of them critical:
+  - **1000× price mismatch**: an edge asset (the "1000"-prefix meme coin) showed a price off by a factor of 1000 — multiple personas spotted "this price is wrong" at a glance (honest caveat: an order-of-magnitude howler like this could also be caught by a range assertion or a human eyeballing it; it doesn't strictly require this method)
+  - **Cross-persona semantic mismatch**: several personas all misread one field as the same wrong meaning. ⚠️ caveat: the personas share the same base model, so "consistent misreading" could be a structural howler — or it could just be "this is how the model reads this passage." Treat it as a high-priority **candidate** to verify, not a proven conclusion
+- Same day, **13 fixes shipped** (26 candidates → 13 adopted, roughly half; the other half were low-vote noise or not worth changing. **The ~50% adoption rate itself shows the matrix is a candidate generator that needs a human to filter — not a verified defect list**)
 
-## 复盘:为什么有效
+## Post-mortem: why it works
 
-1. **认知梯度**:新手撞黑话/恐慌点,资深撞口径/假精度,镜像撞使用场景,新功能目标用户逐行拷打新层——4 种盲区一次覆盖。
-2. **共识 = 优先级**:4/4 撞上的语义错位 vs 1/4 的个人偏好,票数自动排序,不靠拍脑袋。
-3. **冷读纪律**:只许 Read 样本、不看代码,逼出"真用户第一次见到"的真实反应——作者自己 review 永远做不到这点。
-4. **资产确认**:资深画像同时列"别砍清单",防止下版本把用户真爱的设计顺手优化掉。
+1. **Cognitive gradient**: the novice hits jargon and panic points, the veteran hits terminology and false precision, the mirror hits use cases, the target user of the new feature interrogates the new layer line by line — four kinds of blind spot covered in one pass.
+2. **Consensus = priority**: a semantic mismatch flagged 4/4 vs. a personal preference flagged 1/4 — the vote count sorts priorities automatically, no gut calls.
+3. **Cold-read discipline**: personas may only Read the sample, never the code, which forces out the genuine "first time a real user sees this" reaction — something the author reviewing their own work can never reproduce.
+4. **Asset confirmation**: the veteran persona also lists a "do not cut" set, so the next version doesn't casually "optimize away" a design users actually love.
 
-## 一句话
+## In one line
 
-让 4 个不同水平的假用户冷读你的输出,几人从不同角度撞同一个问题 = 值得优先核实的候选。它显著快于、广于"作者自己再读一遍"(强制多视角 + 引用原文 + 资产确认 + 分层),但产出是**待核候选**不是已证缺陷——"比作者强 N 倍"这类倍数没做对照实验,不声称。
+Have 4 fake users at different skill levels cold-read your output; when several of them hit the same problem from different angles, that's a candidate worth verifying first. It's meaningfully faster and broader than "the author reads it one more time" (it forces multiple viewpoints + quotes the original + confirms assets + works in layers) — but the output is **candidates to verify**, not proven defects. Claims like "N times better than the author" haven't been run as a controlled experiment, so we don't make them.

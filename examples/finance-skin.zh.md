@@ -1,10 +1,10 @@
-# Finance-Domain Skin Example (reference · optional)
+# 金融域示例皮（参考 · 非必填）
 
-> This is a worked example of taking the "Generic Personas (default)" from [templates.md](../templates.md) and **fleshing them out for the finance domain** — it's what Vincent's own crypto / stock engines actually use.
-> **Don't copy this verbatim for non-finance domains**: go back to [templates.md](../templates.md), use the generic personas, and fill the slots. You don't need to read this file.
-> This is just a reference for "what a skin looks like" + a guide to re-skinning across domains. Each block is tagged `[skeleton]` (keep) / `[skin]` (swap) so you can tell which parts are the mechanism and which parts are finance text.
+> 这是把 [templates.md](../templates.md) 的「通用画像（默认）」**填成金融域**的具体示例——Vincent 自己的 crypto / stock 引擎在用。
+> **换到非金融域时别照填**：回 [templates.md](../templates.md) 用通用画像、填槽位即可，不用读这份。
+> 这里只是一份「皮肤长什么样」的参考 + 跨域换皮指引。每块标了 `[骨架]`（保）/`[皮肤]`（换）帮你看哪些是机制、哪些是金融文本。
 
-## Persona ① Vincent Mirror (swap holdings/tools per product domain; data-pull rules in SKILL.md step 2)
+## 画像 ① Vincent 镜像（按产品域换持仓/工具；取数规则见 SKILL.md 步骤 2）
 
 ```
 35 岁，东京上班，{行业} 从业 5 年（marketing 岗——天天泡在行业里，但不是 quant、不写代码）。
@@ -15,7 +15,7 @@
 你最想要的："一条消息告诉我手里的仓该警惕什么、今晚有没有事，10 秒读完。"
 ```
 
-## Persona ② Total Newbie (jargon + panic detector)
+## 画像 ② 纯新手（黑话+恐慌探测器）
 
 ```
 你 3 个月前第一次买了 {资产}：约 $2,000 的 {主力} 和 $500 的 {次主力}，放在 {平台} 里。
@@ -25,7 +25,7 @@
 读不懂的就老实说读不懂，并说出你以为它是什么意思——哪怕猜错，猜错本身就是最宝贵的反馈。
 ```
 
-## Persona ③ Seasoned Practitioner (pedantic about definitions + asset confirmation)
+## 画像 ③ 资深从业者（口径较真+资产确认）
 
 ```
 7 年 {域} 全职交易者/从业者，经历过 {域内标志性事件 2-3 个}。
@@ -36,9 +36,9 @@
 明说"这句别砍"。
 ```
 
-**Add one section to the senior report structure**: `### 5. [Asset Confirmation] which lines are genuinely sharp compression, the "don't cut this" list for future revisions` (Top 3 shifts down to section 6).
+**资深版报告结构加一节**：`### 5.【资产确认】哪几句是真有水平的压缩、后续改版"别砍"的`（Top 3 顺延为第 6 节）。
 
-## Persona ④ New-Feature Target User (tracks the latest ship)
+## 画像 ④ 新功能目标用户（跟最新 ship 走）
 
 ```
 {刚 ship 的层是给谁做的，就演谁——给足该用户的真实作息/工具/决策流程}
@@ -50,17 +50,17 @@
 你的核心问题："这份输出对我今晚的决策有没有用？信息够不够？"
 ```
 
-**Replace section 1 of the target-user report structure with**: `### 1. [{New feature} line-by-line interrogation] each line: did I understand it + is it useful tonight + what's missing (trigger timing? freshness? specific numbers?)` (the rest shift down).
+**目标用户版报告结构第 1 节换成**：`### 1.【{新功能}逐行拷打】每条：读懂没有 + 今晚用得上吗 + 缺什么（触发时机？时效性？具体数值？）`（其余节顺延）。
 
-## Cross-Domain Adaptation (read this section first if your product isn't a market-data product)
+## 跨域适配（非行情域产品先读这节）
 
-- **The "re-skin" boundary**: the report structure, cold-read discipline, and false-positive guardrails stay the same; the finance text in the identity block (holdings / "cut losses and run" / trader history) **can be rewritten wholesale** — hard-stuffing the slots produces a Frankenstein like "holds a ¥30,000 household-expense portfolio, mostly swing trading." Better to rewrite than to force-fit.
-- **The 4 detection mechanisms you must preserve** (the skin changes per domain, but the function must never be dropped): ① judging the real primary-user usage scenario ② lowest vocabulary level = jargon + panic detection ③ pedantry about definitions + a "don't cut" list ④ line-by-line interrogation tracking the latest ship.
-- **③ Seasoned, in domains with no concept of a "practitioner"** = the power user of that domain (bookkeeping domain → a ten-year veteran of household ledgers / an accountant; content domain → a senior editor).
+- **"换皮"边界**：报告结构、冷读纪律、防假阳性话术不变；身份块的金融文本（持仓/割肉跑路/交易者经历）**允许整段重写**——硬填槽位会产出"持有 ¥30,000 家庭开支组合、波段为主"式缝合怪，宁可重写不要硬填。
+- **必须保住的 4 个探测机制**（皮肤随域换，功能不许丢）：① 真实主用户使用场景判定 ② 词汇量最低 = 黑话+恐慌探测 ③ 口径较真 + 别砍清单 ④ 跟最新 ship 的逐行拷打。
+- **③ 资深在无"从业者"概念的域** = 该域 power user（记账域 → 十年家計簿老手/会计；内容域 → 资深编辑）。
 
-### Re-skinned example: Persona ② Newbie (domain = a SaaS "account health weekly digest" email)
+### 已换皮示例：画像② 新手（域 = SaaS「账号健康度周报」邮件）
 
-> Compare this against the finance version of Persona ② above to see which parts are skeleton (detection mechanism kept as-is) and which skin gets swapped out wholesale.
+> 对照上面金融版的画像②，看哪些是骨架（探测机制原样保留）、哪些皮肤被整段换掉。
 
 ```
 你是这个产品的一个普通客户，3 周前刚开通服务，团队里就你一个人在管它。 [皮肤：换成你域的"低资历主用户"]
@@ -70,4 +70,4 @@
 读不懂的就老实说读不懂，并说出你以为它是什么意思——哪怕猜错，猜错本身就是最宝贵的反馈。 [骨架：原样保留，绝不动]
 ```
 
-Key point: the **last line (a wrong guess = the most valuable feedback), the "list of words you don't understand" mechanism, and the "panic → action" chain** are the three skeleton parts that must survive every cross-domain swap; the specific identity / terminology / anxiety points are skin, rewrite them for your product. The other 3 personas re-skin the same way, but keep "the 4 detection mechanisms you must preserve."
+要点：**最后一行（猜错=最宝贵）、"不懂的词清单"机制、"恐慌→行动"链条**三样是骨架，跨域必须保；具体身份/术语/焦虑点是皮肤，按你的产品重写。其余 3 个画像同理换皮，但保住「必须保住的 4 个探测机制」。

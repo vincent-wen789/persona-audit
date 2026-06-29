@@ -5,6 +5,8 @@ description: Cold-read any user-facing copy from a real reader's POV before you 
 
 # Persona Audit — 多画像冷读审计
 
+> 🌐 **Opened this file and it's in Chinese?** That's expected — any modern AI reads it fine and replies in *your* language, so paste it as-is. And if you're not on Claude Code you don't even need this file: use the ready-to-paste block in the [README Quickstart](README.md#quickstart).
+
 ## 是什么
 
 4 个画像各演一个真实读者,**冷读**你要发布的内容或产品输出(不看代码、不看文档,像第一次见到那样反应),报"读不懂的"+"缺失的信息"。**共识**(几个画像从不同角度撞上同一处)= 值得优先改的信号。怎么处置分两种模式:**轻量模式**给大白话动作,**引擎模式**走 **ABCD 分层**。(这 4 个画像是各自独立的冷读:能并行跑子 agent 的 runtime——如 Claude Code——一次性发 4 个最快,不能的就逐个轮演。怎么跑是细节,用户看不见。)
@@ -25,7 +27,7 @@ description: Cold-read any user-facing copy from a real reader's POV before you 
 
 ### 轻量模式流程(3 步)
 
-1. **收样本** — 用户把要发布的东西贴进来(文字直接读;截图用 Read 打开,**截图是主刺激物**,见下「视觉产出」纪律)。一件就够,不用凑 6-8 份。
+1. **收样本** — 用户把要发布的东西贴进来(文字直接读;是图就直接看那张图——**截图是主刺激物**,见下「视觉产出」纪律。能 Read 文件的 runtime 就 Read,纯聊天里用户贴的图直接看)。一件就够,不用凑 6-8 份。
 2. **4 画像各自冷读**(用户看不见这步,agent 自动做)。每个演一个读者角色——**主用户镜像 / 纯新手 / 挑剔的老手 / 这内容的目标读者**,只看这件东西、像第一次刷到那样反应,报"读不懂 + 缺失 + 情绪反应"。身份块用 [templates.md](templates.md) 的**通用画像**(不用懂金融,按内容域自动填槽位)。
    **怎么跑**(任何 runtime 二选一,结果一样):
    - **能并行子 agent**(如 Claude Code)→ 一条 message 发 4 个,最快、最独立;
@@ -37,7 +39,7 @@ description: Cold-read any user-facing copy from a real reader's POV before you 
    - **❓ 说不准** — 信息/数据不够,画像也判断不了
    **撞同一处**要分真假:执行/新手/资深/目标读者里 **≥2 类不同画像**都撞 = 高可信、排最前;同一类读者反复说 = 收敛弱,别当铁证。看完直接改,不存档、不跟踪。
 
-📋 **首跑照着看输出长啥样** → [examples/lite-example.md](examples/lite-example.md)(贴一份落地页 → 四档输出的真实例子,顺带演示注入安全锁)。
+📋 **首跑照着看输出长啥样** → [examples/lite-example.zh.md](examples/lite-example.zh.md)(贴一份落地页 → 四档输出的真实例子,顺带演示注入安全锁)。
 
 **轻量模式失败兜底**:贴的是图 → 当截图走「视觉产出」纪律;画像跑不齐(缺员/超时)→ 重发一次,实在不齐就用现有的出、标"X/4 镜头";贴的不是面向用户的内容(代码/内部笔记)→ 不是冷读对象,提示走对的工具。
 
@@ -45,8 +47,9 @@ description: Cold-read any user-facing copy from a real reader's POV before you 
 
 ## 何时用 / 不用
 
-**用**:任何"确定性引擎产出 user-facing 文本"的产品 ship 了新版本/新输出层——readout 工具、报告生成器、bot 推送文案、生成式 copy、每日简报。**域无关**:记账周报、健身打卡、待办提醒、SaaS 健康度邮件……不只行情/金融(默认就用 [templates.md](templates.md) 的通用画像;金融皮和跨域换皮指引见 [examples/finance-skin.md](examples/finance-skin.md))。
-**也用 · X/社媒长文 pre-publish 冷读**:thread / 发帖文案发布前,用 4 画像冷读「钩子顺不顺、缺什么、够不够炸、AI 味重不重」。实战验证有效——精准抓出埋钩子、缺成本数字、安全过度声称、「差点意思」。
+**用**:任何"确定性引擎产出 user-facing 文本"的产品 ship 了新版本/新输出层——readout 工具、报告生成器、bot 推送文案、生成式 copy、每日简报。**域无关**:记账周报、健身打卡、待办提醒、SaaS 健康度邮件……不只行情/金融(默认就用 [templates.md](templates.md) 的通用画像;金融皮和跨域换皮指引见 [examples/finance-skin.zh.md](examples/finance-skin.zh.md))。
+**也用 · X/社媒长文 pre-publish 冷读**:thread / 发帖文案发布前,用 4 画像冷读「钩子顺不顺、缺什么、够不够炸」。实战验证有效——精准抓出埋钩子、缺成本数字、安全过度声称、「差点意思」。
+⚠️ **AI 味不归这把尺**:本 skill 查「看不看得懂」(comprehension),不查「像不像人写的」(texture)——AI 味的文本通常通顺完整,正好不触发画像报警。画像若闻到「读着像营销稿/没魂/差点意思但说不清」→ 那是另一把尺(AI 味/质感取证),需要时单独跑一个逐行质感 pass,别让画像硬判 AI 味。
 **不用**:代码 review(走 code reviewer)/ 纯 UI·视觉(走 design review)/ 交互叙事(走 narrative QA)。
 
 🖼️ **审「图片/卡片/结果页」类视觉产出**:用户真正看到的是**渲出来的画面,不是文字**——所以**截图才是给 persona 的主刺激物,直接丢截图让它看**。
@@ -132,4 +135,4 @@ description: Cold-read any user-facing copy from a real reader's POV before you 
 
 ## Real-World Impact
 
-见 [examples/case-study.md](examples/case-study.md)(脱敏实战:一个加密市场读数工具的两场审计。共识矩阵生成的候选清单里,约一半被采纳当日修复 ship——其中两条是单人 review 容易漏的:一处边缘资产价格错位、一处多画像一致误读的语义错位)。诚实口径:这是**候选清单的命中率**,不是经对照实验证明的"比作者自己 review 强 N 倍"。
+见 [examples/case-study.zh.md](examples/case-study.zh.md)(脱敏实战:一个加密市场读数工具的两场审计。共识矩阵生成的候选清单里,约一半被采纳当日修复 ship——其中两条是单人 review 容易漏的:一处边缘资产价格错位、一处多画像一致误读的语义错位)。诚实口径:这是**候选清单的命中率**,不是经对照实验证明的"比作者自己 review 强 N 倍"。
