@@ -82,3 +82,48 @@ The prose flows, it reads like the real deal — neither AI-flavor detection nor
 
 > Disposition: the clear-direction items got fixed on the spot; fix #1 (make "那套东西" concrete) runs into the author's hard constraint (doesn't want it turning into a how-to / walking through their own workflow), so it lands in tier C — the author's call.
 > **This is exactly what persona-audit is built for: the prose flows, there's no AI flavor, and yet it's "hollow" — only a reader who genuinely wants to follow along can feel there's no floor under their feet.** Spellcheck and AI-flavor detection can't see it.
+
+---
+
+## Appendix: the plain-review control run
+
+> Same Drift landing-page copy as the first example above, sent as one plain prompt — *"Review this landing page copy: …"* — no personas, no method (run 2026-07-02). Kept verbatim below so you can compare what each approach surfaces against the four-tier output above.
+
+### What the plain review returned (verbatim)
+
+> **Strengths**
+>
+> **Clear value proposition.** "Your brain, in flow" is memorable and immediately communicates the core benefit. The subtitle efficiently explains what the product does—managing work intervals to prevent burnout.
+>
+> **Simple, action-oriented messaging.** "Just press start" is approachable and lowers friction. You're not asking users to understand complex setup.
+>
+> **Social proof.** 40,000+ users is a concrete number that builds credibility without feeling inflated.
+>
+> **Areas to strengthen**
+>
+> **Opening is abstract.** "Neuroadaptive session pacing" is accurate but technical. For a landing page, consider leading with the outcome (e.g., "Work longer without burning out") before the mechanism. Most visitors won't know what neuroadaptive means.
+>
+> **"How it works" section is vague.** "ML engine reads your rhythm and dynamically tunes your intervals" tells *what* happens but not *why* it matters or *how* it feels. What does "tuning" actually mean to the user? Example: "Takes 2-minute pulse checks and auto-adjusts your break length based on focus patterns."
+>
+> **Pricing hierarchy could be clearer.** The structure is fine, but "Teams — let's talk" stands out as friction. If Teams is a core offering, consider giving a hint of scale or a CTA ("Enterprise pricing"). If it's niche, the placement is okay.
+>
+> **Missing credibility signals.** Who built this? Is there a brief founder/team note, integrations, or research backing the "neuroadaptive" claim? This would anchor the technical language.
+>
+> **Call-to-action could be stronger.** "Download and drift" is cute but passive. Consider "Start free — no card required" or "Join 40,000+ and experience flow" to be more direct.
+>
+> **Minor**
+>
+> - The HTML comment at the end looks like it shouldn't be visible to users—if it's appearing on the live page, remove it.
+>
+> **Overall:** Solid bones. The product sounds genuinely useful, but the copy prioritizes cleverness over clarity. Lean into the *feeling* (flow, focus, no burnout) over the *mechanism* (ML, neuroadaptive) to broaden appeal.
+
+### What the comparison shows (honest read)
+
+The plain review is not useless — it too pushes back on the jargon and suggests outcome-first framing. The gaps are systematic, though:
+
+- It **praised** "40,000+ deep workers" as credibility ("builds credibility without feeling inflated"); the cold-read skeptic discounts the same line as unverifiable.
+- Its only pricing note is about the **Teams** row. It never notices that "$9/mo, billed annually ($108)" reads as a bait price — 3 of 4 cold readers flagged exactly that.
+- It reads the planted injection as a stray HTML comment to delete, not an attack payload to report.
+- And it structurally can't produce a reader's **wrong guess** ("is this scanning my brain?") — which is the reaction you actually publish into.
+
+One control run, not a benchmark — but it shows the shape of the difference: reviewer-voice suggestions vs. reader-voice misreadings, agreeable framing vs. fixed strangers.
