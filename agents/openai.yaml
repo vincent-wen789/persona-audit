@@ -1,0 +1,7 @@
+interface:
+  display_name: "Persona Audit"
+  short_description: "Cold-read copy from four fixed reader angles"
+  default_prompt: "Use $persona-audit to cold-read this user-facing copy and return a report only."
+
+policy:
+  allow_implicit_invocation: true

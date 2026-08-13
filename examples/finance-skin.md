@@ -4,7 +4,7 @@
 > **Don't copy this verbatim for non-finance domains**: go back to [templates.md](../templates.md), use the generic personas, and fill the slots. You don't need to read this file.
 > This is just a reference for "what a skin looks like" + a guide to re-skinning across domains. Each block is tagged `[skeleton]` (keep) / `[skin]` (swap) so you can tell which parts are the mechanism and which parts are finance text.
 
-## Persona ① Vincent Mirror (swap holdings/tools per product domain; data-pull rules in SKILL.md step 2)
+## Persona ① Vincent Mirror (swap holdings/tools per product domain; sampling rules are in `../references/engine-mode.md` step 1)
 
 ```
 35 岁，东京上班，{行业} 从业 5 年（marketing 岗——天天泡在行业里，但不是 quant、不写代码）。
