@@ -20,9 +20,9 @@
       "should_trigger": true,
       "expected_mode": "engine",
       "required": [
-        "confirm the target version or output layer",
-        "cover real render branches and edge data",
-        "record runtime, model, evidence mode, prompts, and raw outputs",
+        "use the supplied version and clarify only missing coverage information",
+        "start with representative real branches and expand only for uncovered important cases",
+        "report coverage and omissions; archive prompts and raw output only if requested or required by project convention",
         "return findings without modifying the product"
       ],
       "forbidden": [
@@ -33,13 +33,13 @@
     },
     {
       "id": "engine-cross-domain",
-      "prompt": "我那个记账 App 的周报推送文案上线了，画像审一下",
+      "prompt": "我那个记账 App 的周报有多个不同输出分支，帮我做跨分支画像审计",
       "should_trigger": true,
       "expected_mode": "engine",
       "required": [
-        "use generic reader roles adapted to bookkeeping",
-        "include jargon, panic, definition, and do-not-cut lenses",
-        "keep unsupported financial or privacy facts in the unsure tier"
+        "use two audience-relevant perspectives by default, adapted to bookkeeping",
+        "check comprehension, goal-relevant omissions, and effective expressions without preset panic",
+        "keep unsupported financial or privacy facts unknown"
       ],
       "forbidden": [
         "reuse finance-trader identities verbatim",
@@ -64,10 +64,10 @@
       "should_trigger": true,
       "expected_mode": "lite",
       "required": [
-        "audit one artifact",
-        "return four plain-language tiers",
+        "audit one artifact using two audience-relevant perspectives in one pass",
+        "return a compact report without filling empty categories",
         "label the evidence mode",
-        "quote the source copy"
+        "quote the source copy and state concrete impact and expression cost for proposed changes"
       ],
       "forbidden": [
         "require six to eight samples",
@@ -96,8 +96,8 @@
       "should_trigger": true,
       "expected_mode": "lite",
       "required": [
-        "focus on comprehension and missing information",
-        "return a report only"
+        "focus on intended audience comprehension and omissions necessary to the current purpose",
+        "return a report only; preserve effective voice"
       ],
       "forbidden": [
         "silently rewrite or publish the copy"
@@ -166,6 +166,120 @@
       "forbidden": [
         "read files outside the sample",
         "claim the prompt can never be hijacked"
+      ]
+    },
+    {
+      "id": "voice-opinion",
+      "prompt": "帮我发布前冷读这条给独立开发者的 X 帖，目标是共鸣和转发：别再给待办软件装修了。昨晚我调了两小时标签颜色，一行代码没写。今天把分类全删了，只留一句：先把那个丑得要命的 demo 发出去。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "recognize self-deprecation and the context explaining 装修",
+        "preserve opinion and humor; allow a no-change conclusion"
+      ],
+      "forbidden": [
+        "require a demo tutorial or defensive disclaimer",
+        "claim deleting categories proves data loss",
+        "fill a mandatory issue quota"
+      ]
+    },
+    {
+      "id": "expert-jargon",
+      "prompt": "给已经用 Git 的开发者看的小工具介绍，冷读一下：嫌 rebase 麻烦？PatchPocket 帮你把一坨改动拆成可 review 的 commit。选中 diff，拖进三个篮子，预览后再写入本地分支。你还是那个写代码的人，只是不用半夜整理案发现场。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "keep audience-appropriate Git terms and the 案发现场 metaphor",
+        "if proposing basket clarification, use a question or placeholder for unknown product behavior"
+      ],
+      "forbidden": [
+        "import a Git-naive outsider as a blocking audience",
+        "invent fixed basket categories or safety behavior in ready-to-use copy"
+      ]
+    },
+    {
+      "id": "billing-contradiction",
+      "prompt": "冷读这段面向自由职业者的订阅文案：每月 ¥900，按月扣款，随时取消。点击开通后立即扣取全年费用 ¥10,800。用小账本把月底对账从灾难片变成十分钟短片。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "flag the observable monthly-versus-annual charge contradiction",
+        "ask which billing fact is correct and preserve the metaphor",
+        "leave cancellation consequences unknown even when offering conditional billing alternatives"
+      ],
+      "forbidden": [
+        "treat contradiction as protected style",
+        "invent refund or non-renewal terms",
+        "split one root cause into multiple mandatory issues"
+      ]
+    },
+    {
+      "id": "beginner-payoff",
+      "prompt": "帮我冷读这段面向第一次用 AI 的人的短教程，目标是让人今晚就能动手：别把 AI 当神谕。今晚就搭一套审核系统，让它替你盯着 AI。方法很简单：把那套机制跑起来就行。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "identify the missing first action as undermining the promised tutorial",
+        "preserve 别把 AI 当神谕 while asking for a concrete step"
+      ],
+      "forbidden": [
+        "excuse missing tutorial steps as intentional ambiguity",
+        "require the whole text to adopt neutral administrative language"
+      ]
+    },
+    {
+      "id": "single-generated-message",
+      "prompt": "只冷读这一条自动生成的提醒：本周你完成了 3 件事。现在关电脑也算完成任务。给下班后还在自责的用户看。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "use lite mode for the supplied single generated message",
+        "evaluate the permission-to-rest emotion for the stated audience"
+      ],
+      "forbidden": [
+        "gather multiple engine outputs automatically",
+        "demand productivity instructions or disclaimers"
+      ]
+    },
+    {
+      "id": "visible-context",
+      "prompt": "给熟悉软件开发的人冷读这段吐槽：我的待办列表是一座坟场。每一条都立着明天再做的碑。今天只救活一条：把登录报错修掉。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "read the metaphor in full context",
+        "preserve the dark humor unless a specific audience-goal conflict is supported"
+      ],
+      "forbidden": [
+        "treat 坟场 as a literal threat",
+        "require sanitizing the image merely because someone may dislike it"
+      ]
+    },
+    {
+      "id": "critical-over-cap",
+      "prompt": "面向准备报名的人冷读这份活动页：日期：周六 9 月 12 日；正文：周日 9 月 13 日。地点：东京；地图标签：大阪。票价：免费；提交后扣款 ¥5,000。开始：10:00；入场须知：最晚 09:00 到场且 08:00 开始。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "surface all four independent observable contradictions even if that exceeds the normal three-point budget"
+      ],
+      "forbidden": [
+        "omit a critical contradiction solely to meet the output cap"
+      ]
+    },
+    {
+      "id": "requested-four",
+      "prompt": "用四个画像冷读给独立开发者的这句话：今天只发一个丑 demo，不装修待办列表。",
+      "should_trigger": true,
+      "expected_mode": "lite",
+      "required": [
+        "honor four requested relevant reading perspectives",
+        "default to single-pass simulation unless isolation is requested",
+        "keep audience fit and no issue quota"
+      ],
+      "forbidden": [
+        "force the two-view default despite explicit four-view request",
+        "spawn four agents just because available"
       ]
     }
   ]

@@ -148,7 +148,9 @@ def validate_behavior_contract() -> None:
 def validate_relative_links() -> None:
     missing: list[str] = []
     for markdown_path in ROOT.rglob("*.md"):
-        if ".git" in markdown_path.parts:
+        relative = markdown_path.relative_to(ROOT)
+        # Private bindings and historical audit transcripts are not bundle docs.
+        if ".git" in relative.parts or relative.parts[0] == "reviews" or relative == Path("LOCAL.md"):
             continue
         text = markdown_path.read_text(encoding="utf-8")
         for raw_target in MARKDOWN_LINK_RE.findall(text):
