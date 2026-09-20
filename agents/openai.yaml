@@ -1,6 +1,6 @@
 interface:
   display_name: "Persona Audit"
-  short_description: "Cold-read copy from four fixed reader angles"
+  short_description: "Audience cold reads that preserve voice and intent"
   default_prompt: "Use $persona-audit to cold-read this user-facing copy and return a report only."
 
 policy:
